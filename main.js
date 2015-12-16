@@ -7,9 +7,11 @@ $(function () {
 
   // Define our data object
   var context={
-    "city": "London",
-    "street": "Baker Street",
-    "number": "221B"
+    "description": {
+      "escaped": "Using {{}} brackets will result in escaped HTML:",
+      "unescaped": "Using {{{}}} brackets will leave the content as it is:"
+    },
+    "example": "<button> Hello </button>"
   };
 
   // Pass our data to the template

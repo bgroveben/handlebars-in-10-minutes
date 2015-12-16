@@ -2,14 +2,19 @@
 <!--This is our template. -->
 <!--Data will be inserted in its according place, replacing the brackets.-->
 <script id="address-template" type="text/x-handlebars-template">
-  <p>You can find me in {{city}}. My address is {{number}} {{street}}.</p>
+  {{description.escaped}}
+  {{example}}
+
+  <br><br>
+
+  {{description.unescaped}}
+  {{{example}}}
+
 </script>
 
-<!--Your new content will be displayed in here-->
 <div class="content-placeholder"></div>
 
 <!-- dependencies needed: jQuery, Handlebars, and a link to main.js -->
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
 <script src="main.js"></script>
