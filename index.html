@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<!-- Hey Ben, guess what? -->
-<!-- Handlebars doesn't allow you to write JavaScript directly within templates.
-     Instead, it gives you helpers.
-     These are JavaScript functions that you can call from your templates, help you reuse code,
-     and create complex templates.
-     To call a helper, just use it as an expression - {{helpername}}.
-     You can pass parameters as well -{{helpername 12345}}, which are passed as parameters to
-     your helper function. -->
-<!-- Now we're going to create a helper using the registerHelper function. -->
-<!-- We're also going to use some of Handlebars' built-in helpers. -->
-<script id="built-in-helpers-template" type="text/x-handlebars-template">
-  {{#each animals}}
-    <p>
-      The {{capitalize this.name}} says
-      {{#if this.noise}}
-        "{{this.noise}}".
-      {{else}}
-        nothing because it's a {{this.name}}.
-      {{/if}}
-    </p>
-  {{/each}}
+<!--
+Block helpers are similar to regular helpers, but they have an opening and a closing tag like the #if
+and #each built-in helpers.
+These helpers can modify the HTML and content they are wrapped around.
+They are a bit more complicated to create, but they are very powerful.
+You can use them to reuse functionality or to create large blocks of HTML in a reusable way,
+like making lists of items that you can use in many places in your app.
+
+To create a block helper, you again use the Handlebars.registerHelper() function.
+The difference is that this time we will use the second parameter of our callback function - options.
+The options parameter exposes a few of the useful propreties that we will need.
+The example below changes text into uppercase.
+-->
+<script id="block-expressions-template" type="text/x-handlebars-template">
+
+  <p> The <b> {{#uppercase}} konami {{/uppercase}} </b> Code is a cheat code that appears in many video games.</p>
+
+  <p>During the title screen before the game demo begins, the player could press the following sequence of buttons on the game controller to enable the cheat:</p>
+
+  <p>{{#uppercase}}{{code}}{{/uppercase}}</p>
+
+  <p>The code is also present as an Easter egg on a number of websites.</p>
+
 </script>
 
 <div class="content-placeholder"></div>

@@ -1,42 +1,27 @@
 $(function () {
-
-  // Register a helper
-  Handlebars.registerHelper('capitalize', function(str){
-    // str is the argument passed to the helper when called
-    str = str || '';
-    return str.slice(0,1).toUpperCase() + str.slice(1);
-  });
-
   // Grab the template script
-  var theTemplateScript = $("#built-in-helpers-template").html();
+  var theTemplateScript = $("#block-expressions-template").html();
+
+  // This is our block helper
+  // The name of our helper is provided as the first parameter - in this case 'uppercase'
+  Handlebars.registerHelper('uppercase', function(options) {
+
+    // "this" is the context that existed when calling the helper.
+
+    // The options object has a special function - fn. This is a
+    // compiled version of the template that is contained between the opening and closing
+    // blocks of this helper. To get a string, call fn with the context:
+
+    return options.fn(this).toUpperCase();
+
+  });
 
   // Compile the template
   var theTemplate = Handlebars.compile(theTemplateScript);
 
-  // We will call this template on an array of objects
+  // Define our data object
   var context = {
-    animals:[
-      {
-        name: "cow",
-        noise: "moooo"
-      },
-      {
-        name: "cat",
-        noise: "meow"
-      },
-      {
-        name: "ben",
-        noise: "burp"
-      },
-      {
-        name: "fish",
-        noise: ""
-      },
-      {
-        name: "neighbor",
-        noise: "Get off my lawn!"
-      }
-    ]
+    "code": "up up down down left right left right b a select start"
   };
 
   // Pass our data to the template
