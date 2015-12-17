@@ -1,18 +1,16 @@
 <!DOCTYPE html>
-<!--This is our template. -->
-<!--Data will be inserted in its according place, replacing the brackets.-->
-<script id="address-template" type="text/x-handlebars-template">
-  {{description.escaped}}
-  {{example}}
+<!-- The #each helper iterates over an array of items. -->
+<script id="example-template" type="text/x-handlebars-template">
+  <!-- people is looked up in the global context, the one we pass to the compiled template -->
 
-  <br><br>
+  {{#each people}}
 
-  {{description.unescaped}}
-  {{{example}}}
+    <!-- Here the context is each individual person, and we can access each person's properties directly: -->
+    <p>{{firstName}} {{lastName}}</p>
+
+  {{/each}}
 
 </script>
-
-<div class="content-placeholder"></div>
 
 <!-- dependencies needed: jQuery, Handlebars, and a link to main.js -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
