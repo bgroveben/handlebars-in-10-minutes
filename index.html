@@ -1,16 +1,28 @@
 <!DOCTYPE html>
-<!-- The #each helper iterates over an array of items. -->
-<script id="example-template" type="text/x-handlebars-template">
-  <!-- people is looked up in the global context, the one we pass to the compiled template -->
-
-  {{#each people}}
-
-    <!-- Here the context is each individual person, and we can access each person's properties directly: -->
-    <p>{{firstName}} {{lastName}}</p>
-
+<!-- Hey Ben, guess what? -->
+<!-- Handlebars doesn't allow you to write JavaScript directly within templates.
+     Instead, it gives you helpers.
+     These are JavaScript functions that you can call from your templates, help you reuse code,
+     and create complex templates.
+     To call a helper, just use it as an expression - {{helpername}}.
+     You can pass parameters as well -{{helpername 12345}}, which are passed as parameters to
+     your helper function. -->
+<!-- Now we're going to create a helper using the registerHelper function. -->
+<!-- We're also going to use some of Handlebars' built-in helpers. -->
+<script id="built-in-helpers-template" type="text/x-handlebars-template">
+  {{#each animals}}
+    <p>
+      The {{capitalize this.name}} says
+      {{#if this.noise}}
+        "{{this.noise}}".
+      {{else}}
+        nothing because it's a {{this.name}}.
+      {{/if}}
+    </p>
   {{/each}}
-
 </script>
+
+<div class="content-placeholder"></div>
 
 <!-- dependencies needed: jQuery, Handlebars, and a link to main.js -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

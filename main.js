@@ -1,18 +1,41 @@
 $(function () {
+
+  // Register a helper
+  Handlebars.registerHelper('capitalize', function(str){
+    // str is the argument passed to the helper when called
+    str = str || '';
+    return str.slice(0,1).toUpperCase() + str.slice(1);
+  });
+
   // Grab the template script
-  var theTemplateScript = $("#example-template").html();
+  var theTemplateScript = $("#built-in-helpers-template").html();
 
   // Compile the template
   var theTemplate = Handlebars.compile(theTemplateScript);
 
-  // This is the default context, which is passed to the template:
+  // We will call this template on an array of objects
   var context = {
-    people: [
-      {firstName: 'Homer', lastName: 'Simpson'},
-      {firstName: 'Peter', lastName: 'Griffin'},
-      {firstName: 'Eric',  lastName: 'Cartman'},
-      {firstName: 'Kenny', lastName: 'McCormick'},
-      {firstName: 'Bart',  lastName: 'Simpson'},
+    animals:[
+      {
+        name: "cow",
+        noise: "moooo"
+      },
+      {
+        name: "cat",
+        noise: "meow"
+      },
+      {
+        name: "ben",
+        noise: "burp"
+      },
+      {
+        name: "fish",
+        noise: ""
+      },
+      {
+        name: "neighbor",
+        noise: "Get off my lawn!"
+      }
     ]
   };
 
@@ -20,5 +43,6 @@ $(function () {
   var theCompiledHtml = theTemplate(context);
 
   // Add the compiled html to the page
-  $(document.body).append(theCompiledHtml);
+  $('.content-placeholder').html(theCompiledHtml);
+
 });
